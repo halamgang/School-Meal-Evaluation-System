@@ -45,3 +45,4 @@ file_put_contents('data.json', json_encode($existingData));
 // ve_index.php로 이동
 header("Location: ve_index.php");
 exit;
+?>
