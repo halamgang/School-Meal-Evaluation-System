@@ -19,7 +19,7 @@ if (strlen($name) > 3) {
 date_default_timezone_set('Asia/Seoul');
 
 // 현재 날짜와 시간 가져오기
-$dateToday = date('mdHi'); // 다가져옴
+$dateToday = date('mdHi'); // 'mdHi'는 월, 일, 시간(24시간제), 분을 나타내는 포맷입니다.
 
 
 // 저장할 데이터 배열 생성
@@ -37,7 +37,7 @@ $data = array(
 $existingData = file_exists('data.json') ? json_decode(file_get_contents('data.json'), true) : array();
 
 // 새로운 데이터 추가
-array_unshift($existingData, $data);
+$existingData[] = $data;  
 
 // JSON 형식으로 변환하여 파일에 저장
 file_put_contents('data.json', json_encode($existingData));
@@ -45,4 +45,3 @@ file_put_contents('data.json', json_encode($existingData));
 // ve_index.php로 이동
 header("Location: ve_index.php");
 exit;
-?>
