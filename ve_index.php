@@ -36,6 +36,13 @@ function printStars($score) {
     <meta charset="UTF-8">
     <title>급식 설문조사 결과</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="서라벌고 동아리 축제 용 | 테스트 서버" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="Subject" content="Noisy IT" />
+    <meta http-equiv="publisher" content="21101 강하람" />
+    <meta http-equiv="Filename" content="index.php" />
+    <meta http-equiv="Copyright" content="21101 강하람" />
+    <meta http-equiv="imagetoolbar" content="no" />
     <style>
         .box {
 			color:black; 
