@@ -163,7 +163,7 @@ function getSchoolMeal($schoolId, $officeCode) {
 
 <body>
 <div class="container">
-<h3 class="title-text color-father">급식 설문조사 | NoisyIT</h2>
+<h3 class="title-text color-father">급식 설문조사</h2>
 
 <form action="post_data.php" method="POST">
 
@@ -234,7 +234,7 @@ function getSchoolMeal($schoolId, $officeCode) {
 <div class="form-group">
     <label for="feedback" class="color-mom">피드백:</label> 
     <textarea id="feedback" name="feedback" style="resize: none;" maxlength="50" oninput="updateFeedbackCounter(this)"></textarea>
-    <div id="feedback-counter"> 21101 강하람 | 0/50자</div>
+    <div id="feedback-counter"> NoisyIT Webb | 0/50자</div>
 </div>
   
 <div class=bt-container><button type=submit id=button >제출하기</button>
