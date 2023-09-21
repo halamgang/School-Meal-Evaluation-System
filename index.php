@@ -171,11 +171,9 @@ function getSchoolMeal($schoolId, $officeCode) {
 
 <label for = "meal-info" class = "color-mom"> 급식 정보: </label> 
 
-<textarea id = "meal-info"name = "meal-info"readonly style="resize: none;">
-
+<textarea id="meal-info" name="meal-info" readonly style="resize: none; height: 170px;">
 <?php echo getSchoolMeal('7010182', 'B10', '20230901'); ?>
-
-</textarea></div>
+</textarea>
 
 
 <div class="form-group">
