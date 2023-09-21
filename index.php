@@ -177,7 +177,7 @@ function getSchoolMeal($schoolId, $officeCode) {
 
 
 <div class="form-group">
-    <label for="name" class="color-mom">학번:</label>
+    <label for="name" class="color-mom">학번: 익명이며 중복방지용</label>
     <input type="text" id="name" name="name" required maxlength="5" oninput="checkStudentId(this)" />
     <p id="studentid-warning" style="color: red; display: none;">잘못된 학번입니다. 유효한 범위는 10000부터 40000까지입니다.</p>
 </div>
