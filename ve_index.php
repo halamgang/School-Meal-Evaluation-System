@@ -121,8 +121,7 @@ function printStars($score) {
 </head>
 
 <body>
-<h3 class="title-text color-father">급식 설문조사 조사록</h2>
-
+<h3 class="title-text color-father">급식 설문조사 결과 | 아이디어 : <?php echo $ideaCount; ?>개</h3>
 <div class="xbox">
     <h2 class="color-no-mom">급식 평균 만족도</h2>
     
