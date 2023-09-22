@@ -156,7 +156,7 @@ function getSchoolMeal($schoolId, $officeCode) {
 
 <body>
 <div class="container">
-<h3 class="title-text color-father">급식 설문조사 | 아이디어 : <?php echo $ideaCount; ?>개</h3>
+<h3 class="title-text color-father">급식 설문조사</h3>
 
 <form action="post_data.php" method="POST">
 
