@@ -1,4 +1,22 @@
 <?php
+// JSON 파일 경로
+$jsonFilePath = 'data.json';
+
+// JSON 파일 읽기
+if (file_exists($jsonFilePath)) {
+    $jsonData = file_get_contents($jsonFilePath);
+    $data = json_decode($jsonData, true);
+
+    if ($data !== null && is_array($data)) {
+        $ideaCount = count($data);
+    } else {
+        $ideaCount = 0;
+    }
+} else {
+    $ideaCount = 0;
+}
+?>
+<?php
 // data.json 파일에서 데이터 불러오기
 $data = json_decode(file_get_contents('data.json'), true);
 
