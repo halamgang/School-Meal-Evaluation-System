@@ -1,4 +1,22 @@
 <?php
+// JSON 파일 경로
+$jsonFilePath = 'data.json';
+
+// JSON 파일 읽기
+if (file_exists($jsonFilePath)) {
+    $jsonData = file_get_contents($jsonFilePath);
+    $data = json_decode($jsonData, true);
+
+    if ($data !== null && is_array($data)) {
+        $ideaCount = count($data);
+    } else {
+        $ideaCount = 0;
+    }
+} else {
+    $ideaCount = 0;
+}
+?>
+<?php
 
 function getSchoolMeal($schoolId, $officeCode) {
     $apiKey = '45a042fca35c42a4bccad5d7c5c67e04'; // 나이스 키 값 - > 추후 삭제
@@ -49,13 +67,6 @@ function getSchoolMeal($schoolId, $officeCode) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="Description" content="서라벌고 동아리 축제 용 | 테스트 서버" />
-    <meta name="robots" content="noindex, nofollow" />
-    <meta http-equiv="Subject" content="Noisy IT" />
-    <meta http-equiv="publisher" content="21101 강하람" />
-    <meta http-equiv="Filename" content="index.php" />
-    <meta http-equiv="Copyright" content="21101 강하람" />
-    <meta http-equiv="imagetoolbar" content="no" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -163,7 +174,7 @@ function getSchoolMeal($schoolId, $officeCode) {
 
 <body>
 <div class="container">
-<h3 class="title-text color-father">급식 설문조사</h2>
+<h3 class="title-text color-father">급식 설문조사 | 아이디어 : <?php echo $ideaCount; ?>개</h3>
 
 <form action="post_data.php" method="POST">
 
@@ -177,9 +188,9 @@ function getSchoolMeal($schoolId, $officeCode) {
 
 
 <div class="form-group">
-    <label for="name" class="color-mom">학번: 익명이며 중복방지용</label>
-    <input type="text" id="name" name="name" required maxlength="5" oninput="checkStudentId(this)" />
-    <p id="studentid-warning" style="color: red; display: none;">잘못된 학번입니다. 유효한 범위는 10000부터 40000까지입니다.</p>
+    <label for="name" class="color-mom">학번:</label>
+    <input type="text" id="name" name="name" required maxlength="5" value="익명" readonly />
+    <p id="studentid-warning" style="color: red; display: none;">잘못된 학번입니다. 올바른 학번 정보를 입력 해주세요!</p>
 </div>
 
 <div class = "form-group">
@@ -232,7 +243,7 @@ function getSchoolMeal($schoolId, $officeCode) {
 <div class="form-group">
     <label for="feedback" class="color-mom">피드백:</label> 
     <textarea id="feedback" name="feedback" style="resize: none;" maxlength="50" oninput="updateFeedbackCounter(this)"></textarea>
-    <div id="feedback-counter"> NoisyIT Webb | 0/50자</div>
+    <div id="feedback-counter">욕설 및 비속어 방지 | 0/50자</div>
 </div>
   
 <div class=bt-container><button type=submit id=button >제출하기</button>
