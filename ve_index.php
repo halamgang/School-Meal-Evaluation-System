@@ -36,3 +36,122 @@
             <p><strong class="color-mom">피드백:</strong><br><?php echo nl2br(htmlspecialchars($entry['feedback'])); ?></div><?endif;?>
     </div>
 <?endforeach;?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>급식 설문조사 결과</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .box {
+			color:black; 
+			font-family : Helvetica , Arial , sans-serif ; 
+			font-weight :500; 
+			font-size :15px; 
+			border-radius :30px; 
+			line-height :22px; 
+			background-color :transparent ; 
+			border :2px solid #1ECD97 ; 
+            padding: 13px;
+            width: 100%;
+            box-sizing: border-box;
+            outline: none;
+            margin-bottom: 20px;
+        }
+              .xbox {
+			color:black; 
+			font-family : Helvetica , Arial , sans-serif ; 
+			font-weight :500; 
+			font-size :15px; 
+			border-radius :30px; 
+			line-height :22px; 
+			background-color :transparent ; 
+			border :2px solid #1ECD97 ; 
+            padding: 13px;
+            width: 100%;
+            box-sizing: border-box;
+            outline: none;
+            margin-bottom: 20px;
+        }
+          .star {
+        color: #FFD700; /* 노란색 */
+    }
+        .color-mom {
+          color: #1ea9cd;
+        }
+        .color-no-mom {
+           color: #c31ecd;
+        }
+        .color-father {
+          color: #1ECD97;
+        }
+        .title-text {
+            background-size: 200% auto;
+            font-size: 27px;
+            color: #fff;
+            background-image: linear-gradient(45deg, #1ea9cd, #1ECD97, #1ECD97);
+            animation: gradient 5s ease-in-out infinite;
+        }
+  
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+    </style>
+</head>
+
+<body>
+<h3 class="title-text color-father">급식 설문조사 표</h2>
+
+<div class="xbox">
+    <h2 class="color-no-mom">급식 평균 만족도</h2>
+    
+    <p><strong>메뉴 만족도:</strong> <?php printStars($averageFoodGoodOrBad); ?></p>
+    <p><strong>양 만족도:</strong> <?php printStars($averageFoodYangOrBad); ?></p>
+    <p><strong>서비스 만족도:</strong> <?php printStars($averageFoodPeopleOrBad); ?></p>
+</div>
+  
+<?php foreach ($data as $entry): ?>
+<div class="box">
+    <h2 class="color-mom">학번: <?php echo htmlspecialchars($entry['name']); ?> 
+    <small style="font-size: 0.8em;">
+        (23.<?php echo substr(htmlspecialchars($entry['date']), 0, 4); ?>)
+        <?php 
+            // 항목의 날짜와 시간을 DateTime 객체로 변환
+            $entryDateTime = DateTime::createFromFormat('mdHi', $entry['date']);
+            // 한국 시간으로 타임존 설정
+            date_default_timezone_set('Asia/Seoul');
+        
+            // 현재 시간을 한국시간으로 DateTime 객체로 가져옴
+            $now = new DateTime();
+
+            // 두 날짜/시간 사이의 차이를 DateInterval 객체로 가져옴
+            $interval = $now->diff($entryDateTime);
+
+            if ($interval->d > 0) {
+                // 일 단위로 표시 (1일 이상)
+                echo "(" . $interval->format('%a일 전') . ")";
+            } elseif ($interval->h > 0) {
+                // 시간 단위로 표시 (1시간 이상, 1일 미만)
+                echo "(" . $interval->format('%h시간 전') . ")";
+            } else {
+                // 분 단위로 표시 (1분 이상, 1시간 미만)
+                echo "(" . $interval->format('%i분 전') . ")";
+            }
+        ?>
+    </small></h2>
+    
+    <p><strong>메뉴 만족도:</strong> <?php printStars($entry['food_good_or_bad']); ?></p>
+    <p><strong>양 만족도:</strong> <?php printStars($entry['food_yang_or_bad']); ?></p>
+    <p><strong>서비스 만족도:</strong> <?php printStars($entry['food_people_or_bad']); ?></p>
+
+	<?php if (!empty($entry['feedback'])) : ?>
+	<p><strong class="color-mom">피드백:</strong><br><?php echo nl2br(htmlspecialchars($entry['feedback'])); ?></div><?endif;?>
+	
+<?endforeach;?>
+
+
+</body></html>
+
+
